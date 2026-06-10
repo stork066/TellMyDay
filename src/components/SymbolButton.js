@@ -1,0 +1,4 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function SymbolButton({ symbol, selected, onToggle }) {
+    return (_jsxs("button", { type: "button", "aria-pressed": selected, onClick: () => onToggle(symbol.id), className: `relative flex flex-col items-center justify-center gap-2 min-h-tap min-w-tap p-3 rounded-xl bg-surface ${selected ? "border-4 border-accent" : "border-2 border-border"}`, children: [selected && (_jsx("span", { "aria-hidden": "true", className: "absolute top-1 right-1 bg-accent text-accent-fg rounded-full w-7 h-7 flex items-center justify-center font-bold text-base", children: "\u2713" })), _jsx("img", { src: symbol.file, alt: "", className: "w-16 h-16" }), _jsx("span", { className: "text-base font-semibold text-center leading-tight", children: symbol.label })] }));
+}

@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+.vercel
+.env
+.env.*
+!.env.example
+!.env.local.example
+*.log
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea
+coverage
+tsconfig.tsbuildinfo
