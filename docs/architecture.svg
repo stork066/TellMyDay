@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif">
+  <title>Tell My Day — architecture</title>
+  <rect width="1000" height="540" fill="#ffffff"/>
+  <text x="30" y="34" font-size="20" font-weight="bold" fill="#0f172a">Tell My Day — architecture</text>
+
+  <!-- Browser / React SPA -->
+  <rect x="30" y="70" width="280" height="290" rx="12" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="50" y="100" font-size="16" font-weight="bold" fill="#1d4ed8">Browser — React SPA</text>
+  <text x="50" y="122" font-size="13" fill="#0f172a">Vite + TypeScript + Tailwind</text>
+  <text x="50" y="152" font-size="13" fill="#0f172a">• Symbol board (Mulberry symbols)</text>
+  <text x="50" y="174" font-size="13" fill="#0f172a">• Moment bar (3–8 ordered symbols)</text>
+  <text x="50" y="196" font-size="13" fill="#0f172a">• Story view + visible citations</text>
+  <text x="50" y="218" font-size="13" fill="#0f172a">• Family share card</text>
+  <text x="50" y="248" font-size="13" font-weight="bold" fill="#0f172a">Web Speech API</text>
+  <text x="50" y="268" font-size="13" fill="#0f172a">read-aloud + word read-along</text>
+  <text x="50" y="298" font-size="13" font-weight="bold" fill="#0f172a">Single-switch scanning</text>
+  <text x="50" y="318" font-size="13" fill="#0f172a">two-level, Space / tap as switch</text>
+  <text x="50" y="340" font-size="13" fill="#0f172a">high contrast · text size · reduced motion</text>
+
+  <!-- Serverless function -->
+  <rect x="390" y="150" width="240" height="150" rx="12" fill="#f0fdf4" stroke="#15803d" stroke-width="2"/>
+  <text x="410" y="180" font-size="16" font-weight="bold" fill="#15803d">Azure Function</text>
+  <text x="410" y="202" font-size="13" fill="#0f172a">/api/generate (Static Web Apps)</text>
+  <text x="410" y="228" font-size="13" fill="#0f172a">• validates + clamps input</text>
+  <text x="410" y="250" font-size="13" fill="#0f172a">• no-invention system prompt</text>
+  <text x="410" y="272" font-size="13" fill="#0f172a">• verifies citation quotes</text>
+  <text x="410" y="292" font-size="13" fill="#0f172a">  against retrieved text</text>
+
+  <!-- Foundry IQ -->
+  <rect x="710" y="60" width="260" height="170" rx="12" fill="#fefce8" stroke="#a16207" stroke-width="2"/>
+  <text x="730" y="90" font-size="16" font-weight="bold" fill="#a16207">Microsoft Foundry IQ</text>
+  <text x="730" y="112" font-size="13" fill="#0f172a">Knowledge base on Azure AI Search</text>
+  <text x="730" y="138" font-size="13" fill="#0f172a">• file knowledge source:</text>
+  <text x="730" y="158" font-size="13" fill="#0f172a">  synthetic "About Me" profile (.md)</text>
+  <text x="730" y="180" font-size="13" fill="#0f172a">• agentic retrieve API returns</text>
+  <text x="730" y="200" font-size="13" fill="#0f172a">  grounded facts + references</text>
+
+  <!-- Foundry model -->
+  <rect x="710" y="280" width="260" height="130" rx="12" fill="#fdf2f8" stroke="#be185d" stroke-width="2"/>
+  <text x="730" y="310" font-size="16" font-weight="bold" fill="#be185d">Microsoft Foundry model</text>
+  <text x="730" y="332" font-size="13" fill="#0f172a">gpt-4.1-mini deployment</text>
+  <text x="730" y="358" font-size="13" fill="#0f172a">chat completions → strict JSON:</text>
+  <text x="730" y="378" font-size="13" fill="#0f172a">sentences + verbatim fact quotes</text>
+
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <line x1="310" y1="215" x2="388" y2="215" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="316" y="205" font-size="12" fill="#334155">POST symbol ids</text>
+  <line x1="388" y1="245" x2="312" y2="245" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="316" y="264" font-size="12" fill="#334155">story + citations</text>
+
+  <line x1="630" y1="190" x2="708" y2="150" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="636" y="158" font-size="12" fill="#334155">1. retrieve</text>
+  <line x1="630" y1="260" x2="708" y2="320" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="636" y="306" font-size="12" fill="#334155">2. generate</text>
+
+  <!-- Copilot note -->
+  <rect x="30" y="450" width="940" height="60" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="50" y="475" font-size="14" font-weight="bold" fill="#0f172a">GitHub Copilot — development tool</text>
+  <text x="50" y="496" font-size="13" fill="#334155">Used to build the app end to end (plan-first workflow, commits authored with Copilot). All profile content is synthetic and fictional.</text>
+</svg>

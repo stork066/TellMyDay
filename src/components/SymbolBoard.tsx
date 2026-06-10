@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { SYMBOLS, SYMBOL_CATEGORIES, type SymbolCategory } from "../data/symbols";
+import { SYMBOLS, SYMBOL_CATEGORIES, type SymbolCategory } from "../../api/src/shared/symbols";
 import SymbolButton from "./SymbolButton";
 
 const CATEGORY_LABELS: Record<SymbolCategory, string> = {
@@ -41,7 +41,12 @@ export default function SymbolBoard({ selectedIds, onToggle }: Props) {
 
   return (
     <section aria-label="Symbol board">
-      <div role="tablist" aria-label="Symbol categories" className="flex flex-wrap gap-2 mb-4">
+      <div
+        role="tablist"
+        aria-label="Symbol categories"
+        data-scan-group="categories"
+        className="flex flex-wrap gap-2 mb-4"
+      >
         {SYMBOL_CATEGORIES.map((cat, i) => {
           const active = cat === category;
           return (
@@ -73,6 +78,7 @@ export default function SymbolBoard({ selectedIds, onToggle }: Props) {
         role="tabpanel"
         id={`panel-${category}`}
         aria-labelledby={`tab-${category}`}
+        data-scan-group="symbols"
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3"
       >
         {visible.map((s) => (

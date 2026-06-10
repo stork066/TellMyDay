@@ -9,6 +9,7 @@ These rules persist across sessions. Read before editing.
 - **Synthetic data ONLY.** The "About Me" profile and every demo input are fictional. No real names, organizations, employers, schools, addresses, or care-setting details anywhere in code, comments, commits, or videos. State "synthetic/fictional" wherever the profile appears.
 - **Secrets in env vars only.** `.env.local` is gitignored. Never hardcode keys or endpoints. Before any push, grep history for `sk-`, `Bearer`, and the literal `search.windows.net` host followed by a real key.
 - **Fixed scope.** One screen, one flow. No accounts, no multi-user, no database, no chat history. Ask before adding anything beyond the spec in `tell-my-day-build-prompt.md`.
+  - **Approved exception (user decision, 2026-06-10):** a PIN-locked caregiver profile editor. PIN lives in the `CARETAKER_PIN` env var, verified server-side only; edits are written straight to the Foundry IQ knowledge source (the KB stays the single source of truth — still no accounts, no database). The entry point must NOT be reachable via switch scanning (data-scan-exempt, no scan group) so the primary user can't open it by accident. The knowledge-source file API has no content readback (GET file → 405), so editors prefill via the `retrieve` API (whole files come back at minimal extraction).
 
 ## Microsoft Foundry IQ wiring
 

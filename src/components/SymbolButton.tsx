@@ -1,4 +1,4 @@
-import type { SymbolEntry } from "../data/symbols";
+import type { SymbolEntry } from "../../api/src/shared/symbols";
 
 type Props = {
   symbol: SymbolEntry;

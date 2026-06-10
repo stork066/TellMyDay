@@ -1,4 +1,4 @@
-import { SYMBOLS_BY_ID } from "../data/symbols";
+import { SYMBOLS_BY_ID } from "../../api/src/shared/symbols";
 
 export const MAX_SYMBOLS = 8;
 export const MIN_SYMBOLS = 3;
@@ -27,6 +27,7 @@ export default function MomentBar({ selectedIds, onRemove, onMove, onClear }: Pr
   return (
     <section
       aria-label="Your moment"
+      data-scan-group="moment"
       className="bg-surface border-2 border-border rounded-xl p-4 mb-6"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 mb-3">

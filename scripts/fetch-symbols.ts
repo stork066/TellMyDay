@@ -1,5 +1,5 @@
 // Downloads a curated subset of Mulberry symbols (CC BY-SA 4.0) into public/symbols/
-// and writes src/data/symbols.ts. Idempotent: skips files already on disk.
+// and writes api/src/shared/symbols.ts. Idempotent: skips files already on disk.
 //
 // Run:  npm run fetch:symbols
 
@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
 const SYMBOLS_DIR = resolve(ROOT, "public/symbols");
-const MANIFEST_PATH = resolve(ROOT, "src/data/symbols.ts");
+const MANIFEST_PATH = resolve(ROOT, "api/src/shared/symbols.ts");
 
 const RAW_BASE =
   "https://raw.githubusercontent.com/mulberrysymbols/mulberry-symbols/master/EN";
