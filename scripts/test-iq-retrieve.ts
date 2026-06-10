@@ -16,9 +16,9 @@ async function main() {
   // (pre-planned query strings) instead of `messages` (LLM-planned).
   const body = {
     intents: [
-      { type: "semantic", search: "What does Sam do on Thursdays?" },
-      { type: "semantic", search: "Who is Sam's best friend?" },
-      { type: "semantic", search: "What is Sam's dog's name?" },
+      { type: "semantic", search: "What does Joey do on Thursdays?" },
+      { type: "semantic", search: "Who is Joey's best friend?" },
+      { type: "semantic", search: "What is Joey's dog's name?" },
     ],
     includeActivity: true,
   };

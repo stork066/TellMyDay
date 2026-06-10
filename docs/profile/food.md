@@ -1,22 +1,22 @@
-# Food and drink Sam likes
+# Food and drink Joey likes
 
 > Synthetic / fictional. Used to ground the AAC narration.
 
 ## Favorite ice cream
-Sam's favorite ice cream is mint chocolate chip.
+Joey's favorite ice cream is mint chocolate chip.
 
 ## Favorite meal
-Sam's favorite meal is Aunt Rosa's chicken and rice. Aunt Rosa makes it most Sundays.
+Joey's favorite meal is Aunt Rosa's chicken and rice. Aunt Rosa makes it most Sundays.
 
-## Foods Sam loves
+## Foods Joey loves
 - Pizza, especially cheese pizza.
 - Macaroni and cheese.
 - Watermelon in the summer.
 - Hot chocolate with extra whipped cream from Brew Bird.
 
-## Foods Sam does not like
+## Foods Joey does not like
 - Mushrooms.
 - Very spicy food.
 
 ## Drinks
-Sam usually drinks water through the day. On Saturday mornings Sam gets a hot chocolate at Brew Bird. At dinner Sam likes milk.
+Joey usually drinks water through the day. On Saturday mornings Joey gets a hot chocolate at Brew Bird. At dinner Joey likes milk.

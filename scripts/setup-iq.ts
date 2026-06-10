@@ -113,7 +113,7 @@ async function main() {
     const url = `${searchEndpoint}/knowledgebases/${kbName}?api-version=${apiVersion}`;
     const body = {
       name: kbName,
-      description: "Tell My Day — grounded retrieval over Sam's synthetic profile.",
+      description: "Tell My Day — grounded retrieval over Joey's synthetic profile.",
       knowledgeSources: [{ name: KS_NAME }],
       retrievalReasoningEffort: { kind: "minimal" },
     };

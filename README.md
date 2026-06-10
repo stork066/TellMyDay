@@ -4,7 +4,7 @@ An accessibility-first AAC (augmentative and alternative communication) web app.
 
 Built by a direct support professional.
 
-> **Synthetic data only.** Every "About Me" profile entry shipped with this repo is fictional ("Sam", "Marcus", "Biscuit the dog", "Brew Bird coffee shop" — all invented). No real people, places, organizations, or care-setting data appears anywhere in this repo or its history.
+> **Synthetic data only.** Every "About Me" profile entry shipped with this repo is fictional ("Joey", "Marcus", "Biscuit the dog", "Brew Bird coffee shop" — all invented). No real people, places, organizations, or care-setting data appears anywhere in this repo or its history.
 
 ## The problem
 

@@ -51,8 +51,8 @@ describe("parseRetrievePayload", () => {
           {
             type: "text",
             text: JSON.stringify([
-              { ref_id: 1, content: "Places Sam goes." },
-              { ref_id: 0, content: "Marcus is Sam's best friend." },
+              { ref_id: 1, content: "Places Joey goes." },
+              { ref_id: 0, content: "Marcus is Joey's best friend." },
             ]),
           },
         ],
@@ -67,8 +67,8 @@ describe("parseRetrievePayload", () => {
   it("maps chunks to facts with docNames, sorted by ref_id", () => {
     const facts = parseRetrievePayload(payload);
     expect(facts).toEqual([
-      { factId: 0, docName: "people.md", content: "Marcus is Sam's best friend." },
-      { factId: 1, docName: "places.md", content: "Places Sam goes." },
+      { factId: 0, docName: "people.md", content: "Marcus is Joey's best friend." },
+      { factId: 1, docName: "places.md", content: "Places Joey goes." },
     ]);
   });
 
@@ -92,7 +92,7 @@ describe("verifyQuote", () => {
 
 describe("parseModelOutput", () => {
   const facts: Fact[] = [
-    { factId: 0, docName: "people.md", content: "Marcus is Sam's best friend." },
+    { factId: 0, docName: "people.md", content: "Marcus is Joey's best friend." },
   ];
 
   it("keeps verified citations and flags paraphrased ones", () => {
@@ -100,7 +100,7 @@ describe("parseModelOutput", () => {
       sentences: [
         {
           text: "I swam with my best friend Marcus.",
-          citations: [{ factId: 0, quote: "Marcus is Sam's best friend." }],
+          citations: [{ factId: 0, quote: "Marcus is Joey's best friend." }],
         },
         {
           text: "We laughed a lot.",
