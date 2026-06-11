@@ -68,7 +68,7 @@ npm test                           # unit tests (validation, parsing, quote veri
 
 ## Contest
 
-Microsoft Learn username: `YOUR-LEARN-USERNAME` <!-- TODO: fill in before submitting -->
+Microsoft Learn username: `cadenstorkamp-1023`
 
 ## License
 
