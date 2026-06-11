@@ -102,9 +102,24 @@ export function useSwitchScanning(enabled: boolean, intervalMs: number) {
       return target instanceof Element && target.closest("[data-scan-exempt]") !== null;
     }
 
+    // Space must work as the switch regardless of which element happens to
+    // hold focus (e.g. the header toggle that turned scanning on). Only two
+    // exceptions: real text/select inputs keep Space for typing, and when no
+    // scan groups are available (a dialog is open) Space stays native so
+    // focused buttons still work.
+    function isTypingTarget(target: EventTarget | null): boolean {
+      return (
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement ||
+        (target instanceof HTMLElement && target.isContentEditable)
+      );
+    }
+
     function onKeyDown(e: KeyboardEvent) {
-      if (isExempt(e.target)) return;
       if (e.key === " " || e.code === "Space") {
+        if (isTypingTarget(e.target)) return;
+        if (currentList().length === 0) return;
         e.preventDefault();
         e.stopPropagation();
         select();
