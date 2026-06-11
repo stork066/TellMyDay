@@ -136,6 +136,24 @@ export function searchEnv() {
   };
 }
 
+// A hung upstream call would otherwise stall until the Static Web Apps
+// gateway kills the function at 45s; time out early and retry once so the
+// user gets a friendly error (or a recovery) well within that budget.
+async function fetchWithTimeout(
+  url: string,
+  init: RequestInit,
+  friendlyMessage: string,
+): Promise<Response> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      return await fetch(url, { ...init, signal: AbortSignal.timeout(15_000) });
+    } catch (err) {
+      console.error(`Upstream call attempt ${attempt + 1} failed: ${String(err)}`);
+    }
+  }
+  throw new HttpError(504, friendlyMessage);
+}
+
 export async function retrieveByIntents(searches: string[]): Promise<Fact[]> {
   const { endpoint, key, kbName, apiVersion } = searchEnv();
   const url = `${endpoint}/knowledgebases/${encodeURIComponent(kbName)}/retrieve?api-version=${apiVersion}`;
@@ -143,11 +161,15 @@ export async function retrieveByIntents(searches: string[]): Promise<Fact[]> {
     intents: searches.map((search) => ({ type: "semantic", search })),
   };
 
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "api-key": key },
-    body: JSON.stringify(body),
-  });
+  const res = await fetchWithTimeout(
+    url,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "api-key": key },
+      body: JSON.stringify(body),
+    },
+    "We couldn't read the profile right now. Please try again.",
+  );
   if (!res.ok && res.status !== 206) {
     console.error(`IQ retrieve failed: HTTP ${res.status} ${await res.text()}`);
     throw new HttpError(502, "We couldn't read the profile right now. Please try again.");
@@ -252,20 +274,24 @@ async function generateSentences(
   const apiKey = requiredEnv("FOUNDRY_API_KEY");
   const deployment = requiredEnv("FOUNDRY_MODEL_DEPLOYMENT");
 
-  const res = await fetch(`${endpoint}/chat/completions`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "api-key": apiKey },
-    body: JSON.stringify({
-      model: deployment,
-      messages: [
-        { role: "system", content: buildSystemPrompt(readingLevel) },
-        { role: "user", content: buildUserPrompt(symbols, facts) },
-      ],
-      response_format: { type: "json_object" },
-      temperature: 0.4,
-      max_tokens: 600,
-    }),
-  });
+  const res = await fetchWithTimeout(
+    `${endpoint}/chat/completions`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "api-key": apiKey },
+      body: JSON.stringify({
+        model: deployment,
+        messages: [
+          { role: "system", content: buildSystemPrompt(readingLevel) },
+          { role: "user", content: buildUserPrompt(symbols, facts) },
+        ],
+        response_format: { type: "json_object" },
+        temperature: 0.4,
+        max_tokens: 600,
+      }),
+    },
+    "The story writer didn't answer. Please try again in a moment.",
+  );
   if (!res.ok) {
     console.error(`Chat completion failed: HTTP ${res.status} ${await res.text()}`);
     throw new HttpError(502, "The story writer is busy right now. Please try again.");

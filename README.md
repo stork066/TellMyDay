@@ -66,6 +66,12 @@ npm test                           # unit tests (validation, parsing, quote veri
 3. In the Static Web App's **Environment variables**, add every var from `.env.local.example` — including `CARETAKER_PIN`, which gates the caregiver profile editor.
 4. Push to `main`. The workflow in `.github/workflows/azure-static-web-apps.yml` builds the Vite app and deploys `api/` as managed Azure Functions.
 
+## Future work
+
+- **Document upload for profile setup.** Caregivers usually already have "About Me" documents for the people they support. The Foundry IQ knowledge source ingests PDF/Word files natively, so the caregiver panel could accept a document upload instead of (or alongside) typed sections. A real deployment of this would need consent and proper handling of care records — which is why everything in this repo stays synthetic.
+- **Personal photo symbols.** Letting caregivers add real photos (their actual mom, their actual dog) as symbols — standard practice in AAC, and far more recognizable than generic or generated imagery.
+- **Azure AI Speech neural voices.** Optional higher-quality read-aloud via Azure Neural TTS (token issued by an Azure Function, word-boundary events keeping the read-along highlighting), with the Web Speech API kept as the free, offline, zero-latency fallback.
+
 ## Contest
 
 Microsoft Learn username: `cadenstorkamp-1023`
