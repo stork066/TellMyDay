@@ -79,7 +79,10 @@ export default function App() {
 
   function clearSymbols() {
     setSelectedIds([]);
-    setAnnouncement("Cleared your moment.");
+    setAnnouncement(story ? "Cleared your moment and story." : "Cleared your moment.");
+    setStory(null);
+    setStoryStatus("idle");
+    setStoryError(null);
   }
 
   useEffect(() => {
